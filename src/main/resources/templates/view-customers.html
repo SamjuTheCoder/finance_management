@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+<body>
+	<div layout:fragment="content">
+	 <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>All Customers</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+              <li class="breadcrumb-item"><a th:href="@{/view-customers}">View</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+	<!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            
+            <!-- /.card -->
+			 <div class="card">
+              <div class="card-header">
+                <h3 class="card-title"></h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Fullname</th>
+               		<th>Sex</th>
+               		<th>Phone</th>
+               		<th>Email</th>
+               		<th>Savings Type</th>
+               		<th>Address</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr th:each="menu : ${customers}">
+                    <td th:text="${menu.fullname}"></td>
+                    <td th:text="${menu.sex}"></td>
+                    <td th:text="${menu.phone}"></td>
+                    <td th:text="${menu.email}"></td>
+                    <td th:text="${menu.savings_type}"></td>
+                    <td th:text="${menu.address}"></td>
+                    <td><button class="btn btn-info fa fa-edit"></button></td>
+                    
+                  </tr>
+                  
+                  </tbody>
+                  
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+	     
+	</div>
+</body>
+</html>

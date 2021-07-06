@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+<body>
+	<div layout:fragment="content">
+	 <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Create Depositor</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+              <li class="breadcrumb-item active">Create</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+	<!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-titlex" th:text="${msg}"> </h3>
+              
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="post" th:action="@{/create-depositors}">
+                <div class="card-body">
+                <div class="row">
+                  <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1">Fullname</label>
+                    <input type="text" name="fullname" class="form-control" id="fullname" placeholder="Enter Fullname" required>
+                  </div>
+                   <div class="select2-purple form-group col-md-4">
+                   <label for="exampleInputEmail1">Sex</label>
+                    <select class="form-control" id="sex" name="sex" data-placeholder="Select a Category" data-dropdown-css-class="select2-purple" required >
+                      <option value="">Select</option>
+                        <option value="Male">Male</option>
+					    <option value="Female">Female</option>
+					    
+                    </select>
+                  </div>
+                   <div class="select2-purple form-group col-md-4">
+                   <label for="exampleInputEmail1">Savings Type</label>
+                    <select class="form-control"  name="savings_type" data-placeholder="Select a Category" data-dropdown-css-class="select2-purple" required >
+                      <option value="">Select</option>
+                      <option th:each="menu : ${savingstype}" th:value="${menu.saving_type}"  th:text="${menu.saving_type}"></option>
+                    </select>
+                  </div>
+                  
+                 </div>
+                 <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email" required>
+                  </div>
+                  
+                  <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Phone</label>
+                    <input type="text" name="phone" class="form-control" id="phone" placeholder="Enter Phone">
+                  </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Address</label>
+                    <input type="text" name="address" class="form-control" id="address" placeholder="Enter Address">
+                  </div>
+                
+                  <div class="form-control-feedback">
+                         <span class="text-danger align-middle">
+                         </span>
+                 </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+			 <div class="card">
+              <div class="card-header">
+                <h3 class="card-title"></h3>
+              </div>
+             
+             
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+	     
+	</div>
+</body>
+</html>

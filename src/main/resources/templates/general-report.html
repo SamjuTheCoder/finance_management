@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="_layout">
+<body>
+	<div layout:fragment="content">
+	 <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>All Transaction</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a th:href="@{/home}">Home</a></li>
+              <li class="breadcrumb-item"><a th:href="@{/general-report}">General report</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+	<!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            
+            <!-- /.card -->
+			 <div class="card">
+              <div class="card-header">
+                <h3 class="card-title"></h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Customer</th>
+               		<th>Credit</th>
+               		<th>Debit</th>
+               		<th>Balance</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr th:each="menu : ${transaction}">
+                    <td th:text="${menu.fullname}"></td>
+                    <td th:text="${#numbers.formatDecimal(menu.credit,0,'COMMA',2,'POINT')}"></td>
+                    <td th:text="${#numbers.formatDecimal(menu.debit,1,'COMMA',2,'POINT')}"></td>
+                    <td th:text="${#numbers.formatDecimal(menu.credit-menu.debit,0,'COMMA',2,'POINT')}"></td>
+                    <td><a th:href="@{'/view-customer-transaction/' + ${menu.customerid} }"><button class="btn btn-info fa fa-eye"></button></a></td>
+                    
+                  </tr>
+                  
+                  </tbody>
+                  
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+	     
+	</div>
+</body>
+</html>
